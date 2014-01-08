@@ -44,6 +44,14 @@
   // getElementById is not available.
   var S = function (selector, context) {
     if (typeof selector === 'string') {
+      // IE 8 fix
+      if ($.browser.msie && (parseInt($.browser.version) < 9)) {
+        if (context) {
+          return $(selector, context);
+        }
+        return $(selector);
+      }
+
       if (context) {
         return $(context.querySelectorAll(selector));
       }
@@ -218,7 +226,7 @@
           return this.libs[lib].init.apply(this.libs[lib], [this.scope, args[lib]]);
         }
 
-        return this.libs[lib].init.apply(this.libs[lib], args);
+        return this.libs[lib].init.apply(this.libs[lib], (args || [])); // IE 8 fix (args || []) 
       }
 
       return function () {};
