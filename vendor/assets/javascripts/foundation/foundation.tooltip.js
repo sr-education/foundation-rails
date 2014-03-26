@@ -124,6 +124,14 @@
           settings = $.extend({}, this.settings, this.data_options($target)),
           tip_template = this.settings.tip_template;
 
+      // ADDING SUPPORT FOR SINGLE, TARGETTED TIPS
+      if ($target.attr('data-single') == 'true') {
+        if ($('.tooltip[data-selector="'+this.selector($target)+'"]').length == 0) {
+          console.log('ALERT: Unable to find tooltip content for "'+this.selector($target)+'"!');
+        }
+        return $target;
+      }
+
       if (typeof settings.tip_template === 'string' && window.hasOwnProperty(settings.tip_template)) {
         tip_template = window[settings.tip_template];
       }
