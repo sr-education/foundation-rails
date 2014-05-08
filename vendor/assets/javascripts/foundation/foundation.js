@@ -44,14 +44,6 @@
   // getElementById is not available.
   var S = function (selector, context) {
     if (typeof selector === 'string') {
-      // IE 8 fix
-      if ($.browser.msie && (parseInt($.browser.version) < 9)) {
-        if (context) {
-          return $(selector, context);
-        }
-        return $(selector);
-      }
-
       if (context) {
         var cont;
         if (context.jquery) {
