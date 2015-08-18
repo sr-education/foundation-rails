@@ -186,9 +186,9 @@
           parent = direct_parent.parent();
         }
 
-        if (is_radio && required) {
+        if (is_radio && required && !$(el).prop('disabled')) {
           validations.push(this.valid_radio(el, required));
-        } else if (is_checkbox && required) {
+        } else if (is_checkbox && required && !$(el).prop('disabled')) {
           validations.push(this.valid_checkbox(el, required));
         } else if (validator) {
           valid = this.settings.validators[validator].apply(this, [el, required, parent])
@@ -205,7 +205,7 @@
         } else {
 
           if (el_patterns[i][1].test(value) && valid_length ||
-            !required && el.value.length < 1 || $(el).attr('disabled')) {
+            !required && el.value.length < 1 || $(el).prop('disabled')) {
             this.S(el).removeAttr(this.invalid_attr);
             parent.removeClass('error');
             if (label.length > 0 && settings.error_labels) label.removeClass('error');
