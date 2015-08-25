@@ -4,6 +4,7 @@
 //= require foundation/foundation.alert
 //= require foundation/foundation.clearing
 //= require foundation/foundation.dropdown
+//= require foundation/foundation.equalizer
 //= require foundation/foundation.interchange
 //= require foundation/foundation.joyride
 //= require foundation/foundation.magellan
@@ -14,4 +15,3 @@
 //= require foundation/foundation.tab
 //= require foundation/foundation.tooltip
 //= require foundation/foundation.topbar
-//= require foundation/foundation.equalizer
